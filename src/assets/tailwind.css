@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Gothic';
+    src: url('/fonts/SpecialGothicExpandedOne-Regular.ttf');
+}
+
+@theme {
+    --font-gothic: "Gothic", sans-serif;
+}

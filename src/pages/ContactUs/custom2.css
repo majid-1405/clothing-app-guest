@@ -1,0 +1,101 @@
+.contact-form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+.button {
+    background-color: #045aaa; 
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    border-radius: 25px;
+  }
+  
+  .button1:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; /* Warna latar belakang navbar */
+    padding: 10px 20px; /* Padding di dalam navbar */
+}
+
+.navbar-brand {
+    color: rgb(17, 17, 17); /* Warna teks untuk brand */
+    font-size: 24px; /* Ukuran font untuk brand */
+    font-weight: bold; /* Menebalkan teks brand */
+}
+
+.navbar-menu {
+    list-style: none; /* Menghilangkan bullet points */
+    display: flex; /* Menampilkan item menu secara horizontal */
+    margin: 0; /* Menghilangkan margin */
+    padding: 0; /* Menghilangkan padding */
+}
+
+.navbar-item {
+    margin-left: 20px; /* Jarak antar item menu */
+}
+
+.navbar-item a {
+    color: rgb(17, 17, 17); /* Warna teks untuk link */
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    padding: 5px 10px; /* Padding di dalam link */
+    transition: background-color 0.3s; /* Transisi untuk efek hover */
+}
+
+.navbar-item a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Efek hover */
+    border-radius: 4px; /* Sudut membulat pada hover */
+}
+
+.card {
+    max-width: 800px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.8);;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

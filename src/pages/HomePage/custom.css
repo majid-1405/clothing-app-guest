@@ -1,0 +1,90 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; /* Warna latar belakang navbar */
+    padding: 10px 20px; /* Padding di dalam navbar */
+}
+
+.navbar-brand {
+    color: rgb(17, 17, 17); /* Warna teks untuk brand */
+    font-size: 24px; /* Ukuran font untuk brand */
+    font-weight: bold; /* Menebalkan teks brand */
+}
+
+.navbar-menu {
+    list-style: none; /* Menghilangkan bullet points */
+    display: flex; /* Menampilkan item menu secara horizontal */
+    margin: 0; /* Menghilangkan margin */
+    padding: 0; /* Menghilangkan padding */
+}
+
+.navbar-item {
+    margin-left: 20px; /* Jarak antar item menu */
+}
+
+.navbar-item a {
+    color: rgb(17, 17, 17); /* Warna teks untuk link */
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    padding: 5px 10px; /* Padding di dalam link */
+    transition: background-color 0.3s; /* Transisi untuk efek hover */
+}
+
+.navbar-item a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Efek hover */
+    border-radius: 4px; /* Sudut membulat pada hover */
+}
+
+
+.card{
+    width: 20%;
+    display: inline-block;
+    box-shadow: 2px 2px 20px black;
+    border-radius: 5px; 
+    margin: 2%;
+   }
+
+.image img{
+ width: 100%;
+ border-top-right-radius: 5px;
+ border-top-left-radius: 5px;
+ 
+
+
+}
+
+.title{
+
+ text-align: center;
+ padding: 10px;
+ 
+}
+
+h1{
+ font-size: 20px;
+}
+
+.des{
+ padding: 3px;
+ text-align: center;
+
+ padding-top: 10px;
+       border-bottom-right-radius: 5px;
+ border-bottom-left-radius: 5px;
+}
+button{
+ margin-top: 40px;
+ margin-bottom: 10px;
+ background-color: white;
+ border: 1px solid black;
+ border-radius: 5px;
+ padding:10px;
+}
+button:hover{
+ background-color: black;
+ color: white;
+ transition: .5s;
+ cursor: pointer;
+}
+
