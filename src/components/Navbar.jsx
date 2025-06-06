@@ -1,3 +1,4 @@
+import { BsFillCartFill } from "react-icons/bs"; 
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { BiErrorCircle } from "react-icons/bi";
@@ -104,6 +105,11 @@ export default function Navbar() {
             <NavLink id="menu-8" to="/ErrorPage" className={menuClass}>
               {/* <BiErrorCircle className="mr-4 text-xl" /> */}
               404
+            </NavLink>
+          </li>
+          <li>
+            <NavLink id="menu-8" to="/KeranjangPage" className={menuClass}>
+              <BsFillCartFill />
             </NavLink>
           </li>
           <li className="flex items-center gap-2 text-slate-600">

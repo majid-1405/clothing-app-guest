@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Rina Andriani",
+    "rating": 5,
+    "content": "Website-nya sangat mudah digunakan. Navigasi cepat dan checkout-nya simpel. Desainnya juga menarik dan informatif.",
+    "purchaseItem": "Blazer Linen Wanita",
+    "avatar": "https://randomuser.me/api/portraits/women/1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Fajar Nugroho",
+    "rating": 4,
+    "content": "Pengalaman belanja cukup memuaskan. Tapi loading halaman produk agak lambat. Proses pembayaran aman dan cepat.",
+    "purchaseItem": "Kaos Oversize Pria",
+    "avatar": "https://randomuser.me/api/portraits/men/2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Maya Salsabila",
+    "rating": 5,
+    "content": "Senang banget belanja di sini! Fitur filter ukuran dan warna sangat membantu. Dapet promo free ongkir juga.",
+    "purchaseItem": "Dress Floral Lengan Panjang",
+    "avatar": "https://randomuser.me/api/portraits/women/3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Denny Prasetyo",
+    "rating": 4,
+    "content": "Situs oke, cuma foto produknya kurang detail. Untungnya barang yang datang sesuai ekspektasi.",
+    "purchaseItem": "Kemeja Katun Polos",
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Nur Azizah",
+    "rating": 5,
+    "content": "Checkout-nya cepat, bisa bayar pakai e-wallet. Resi langsung dikirim ke email, mantap!",
+    "purchaseItem": "Cardigan Rajut Wanita",
+    "avatar": "https://randomuser.me/api/portraits/women/5.jpg"
+  }
+]

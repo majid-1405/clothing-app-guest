@@ -18,6 +18,10 @@ import ContactPage from "./pages/ContactPage";
 import OurTeamPage from "./pages/OurTeamPage";
 import AboutPage from "./pages/AboutPage";
 import Reviewpage from "./pages/ReviewPage";
+import ProductQuickview from "./pages/ProductQuickview";
+import ProductDetail from "./pages/ProduckDetail";
+import KeranjangPage from "./pages/KeranjangPage";
+import ReviewDetail from "./pages/ReviewDetails";
 const HomePage = React.lazy(() => import("./pages/Homepage"));
 const ProductList = React.lazy(() => import("./pages/ProductList"));
 const FAQ = React.lazy(() => import("./pages/FAQ"));
@@ -41,7 +45,13 @@ function App() {
           <Route path="/Contactus" element={<ContactPage/>} />
           <Route path="/OurTeam" element={<OurTeamPage/>} />   
           <Route path="/Aboutus" element={<AboutPage/>} />   
-          <Route path="/Reviewpage" element={<Reviewpage/>} />  
+          <Route path="/Reviewpage" element={<Reviewpage/>} /> 
+          <Route path="/Reviewpage/:id" element={<ReviewDetail/>} /> 
+          <Route path="/KeranjangPage" element={<KeranjangPage/>} />
+          <Route path="/KeranjangPage/:id" element={<ProductQuickview />} />  
+          <Route path="/QuickReview/:id" element={<ProductQuickview />} /> 
+          <Route path="/ProductList/:id" element={<ProductDetail/>} /> 
+          {/* <Route path="/ProductQuickview" element={<ProductQuickview/>} />  */}
           {/* <Route path="*" element={<ErrorPage />} /> */}
         </Route>
         <Route element={<AuthLayout />}>
