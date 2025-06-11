@@ -22,6 +22,10 @@ import ProductQuickview from "./pages/ProductQuickview";
 import ProductDetail from "./pages/ProduckDetail";
 import KeranjangPage from "./pages/KeranjangPage";
 import ReviewDetail from "./pages/ReviewDetails";
+import ArticlePage from "./pages/ArticlePage";
+import CareerPage from "./pages/CareerPage";
+import MediaPage from "./pages/MediaPage";
+import PreOrderPage from "./pages/PreOrderPage";
 const HomePage = React.lazy(() => import("./pages/Homepage"));
 const ProductList = React.lazy(() => import("./pages/ProductList"));
 const FAQ = React.lazy(() => import("./pages/FAQ"));
@@ -51,6 +55,10 @@ function App() {
           <Route path="/KeranjangPage/:id" element={<ProductQuickview />} />  
           <Route path="/QuickReview/:id" element={<ProductQuickview />} /> 
           <Route path="/ProductList/:id" element={<ProductDetail/>} /> 
+          <Route path="/Articlepage" element={<ArticlePage/>} /> 
+          <Route path="/Careerpage" element={<CareerPage/>} /> 
+          <Route path="/Mediapage" element={<MediaPage/>} /> 
+          <Route path="/PreOrderpage" element={<PreOrderPage/>} /> 
           {/* <Route path="/ProductQuickview" element={<ProductQuickview/>} />  */}
           {/* <Route path="*" element={<ErrorPage />} /> */}
         </Route>

@@ -84,6 +84,26 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/Articlepage" className={menuClass}>
+              Article
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/Careerpage" className={menuClass}>
+              Career
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/Mediapage" className={menuClass}>
+              Media
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/PreOrderpage" className={menuClass}>
+              Pre Order
+            </NavLink>
+          </li>
+          <li>
             <NavLink id="menu-5" to="/400" className={menuClass}>
               {/* <BiErrorCircle className="mr-4 text-xl" />    */}
               400
