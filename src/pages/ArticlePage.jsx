@@ -1,28 +1,30 @@
-import { useEffect, useState } from 'react';
-import { ArticlePageAPI } from "../services/ArticlePageAPI";
-import ArticleList from '../components/Articlelist';
+import { useEffect, useState } from "react";
+import { ArticlePageAPI } from "../services/ArticlePageAPI"; // pastikan ini pakai axios
+import ArticleList from "../components/Articlelist";
 
 export default function ArticlePage() {
   const [products, setProducts] = useState([]);
   const [form, setForm] = useState({
-    title: '',
-    img: '',
-    date: '',
-    summary: ''
+    title: "",
+    img: "",
+    date: "",
+    summary: "",
   });
-
-  const fetchProducts = async () => {
-    try {
-      const data = await ArticlePageAPI.fetchNotes();
-      setProducts(data.sort((a, b) => new Date(b.date) - new Date(a.date)));
-    } catch (error) {
-      console.error("Gagal mengambil data:", error);
-    }
-  };
 
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const fetchProducts = async () => {
+  try {
+    const data = await ArticlePageAPI.fetchNotes();
+    console.log("DATA PRODUK:", data);
+    setProducts(data.sort((a, b) => new Date(b.date) - new Date(a.date)));
+  } catch (error) {
+    console.error("Gagal mengambil data:", error);
+  }
+};
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,8 +33,10 @@ export default function ArticlePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("FORM KIRIM:", form);
       await ArticlePageAPI.createArticlePage(form);
-      setForm({ title: '', img: '', date: '', summary: '' });
+      console.log("SELESAI KIRIM");
+      setForm({ title: "", img: "", date: "", summary: "" });
       fetchProducts();
     } catch (error) {
       console.error("Gagal menambahkan produk:", error);
@@ -41,7 +45,9 @@ export default function ArticlePage() {
 
   return (
     <div className="w-full px-4 py-10 space-y-10 bg-gray-100 min-h-screen">
-      <h1 className="text-4xl font-bold text-center mb-6">Produk Fashion Terbaru</h1>
+      <h1 className="text-4xl font-bold text-center mb-6">
+        Produk Fashion Terbaru
+      </h1>
 
       {/* Form Tambah Produk */}
       <form
@@ -89,8 +95,20 @@ export default function ArticlePage() {
         </button>
       </form>
 
-      {/* Daftar Produk dari Komponen */}
-      <ArticleList products={products} />
+      {/* Daftar Produk */}
+      <ArticleList
+        products={products}
+        onEdit={(product) => setForm(product)}
+        onDelete={async (id) => {
+          try {
+            await ArticlePageAPI.deleteArticlePage(id);
+            fetchProducts();
+          } catch (error) {
+            console.error("Gagal menghapus produk:", error);
+          }
+        }}
+        loading={false}
+      />
     </div>
   );
 }

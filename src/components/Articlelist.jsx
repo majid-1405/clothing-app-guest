@@ -1,22 +1,36 @@
-export default function ArticleList({ products }) {
+// components/ArticleList.jsx
+export default function ArticleList({ products = [], onEdit, onDelete, loading }) {
+  if (loading) return <p className="text-center text-gray-500">Memuat data...</p>;
+  if (!products || products.length === 0) return <p className="text-center text-gray-500">Belum ada produk.</p>;
+
   return (
-    <>
-       {products.map((product) => (
+    <div className="space-y-6">
+      {products.map((product) => (
         <div
           key={product.id}
           className="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-md overflow-hidden"
         >
-          {/* Konten kiri */}
           <div className="flex-1 p-6 text-center md:text-left">
             <p className="text-sm text-gray-500 mb-1">{product.date}</p>
             <h2 className="text-2xl font-semibold text-black">{product.title}</h2>
             <p className="mt-2 text-gray-700">{product.summary}</p>
-            <button className="mt-4 bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">
-              Lihat Detail
-            </button>
+
+            <div className="mt-4 flex gap-3 justify-center md:justify-start">
+              <button
+                onClick={() => onEdit(product)}
+                className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => onDelete(product.id)}
+                className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition"
+              >
+                Hapus
+              </button>
+            </div>
           </div>
 
-          {/* Gambar */}
           <div className="flex-1 max-w-md p-4">
             <div className="h-[300px] w-full bg-gray-100 flex items-center justify-center overflow-hidden rounded-lg shadow">
               <img
@@ -28,6 +42,6 @@ export default function ArticleList({ products }) {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 }
