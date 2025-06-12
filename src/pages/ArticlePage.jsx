@@ -1,45 +1,75 @@
 import { useEffect, useState } from "react";
-import { ArticlePageAPI } from "../services/ArticlePageAPI"; // pastikan ini pakai axios
-import ArticleList from "../components/Articlelist";
+import { ArticleAPI } from "../services/ArticleAPI";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
+import EmptyState from "../components/EmptyState";
+import AlertBox from "../components/AlertBox";
+import ArticleList from "../components/ArticleList"; // Pastikan komponen ini ada
 
 export default function ArticlePage() {
-  const [products, setProducts] = useState([]);
+  const [article, setArticle] = useState([]);
   const [form, setForm] = useState({
     title: "",
     img: "",
     date: "",
     summary: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingId, setEditingId] = useState(null);
+
+  const fetchArticle = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const data = await ArticleAPI.fetchArticles();
+      setArticle(data);
+    } catch (err) {
+      setError("Gagal mengambil data artikel");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    fetchProducts();
+    fetchArticle();
   }, []);
 
-  const fetchProducts = async () => {
-  try {
-    const data = await ArticlePageAPI.fetchNotes();
-    console.log("DATA PRODUK:", data);
-    setProducts(data.sort((a, b) => new Date(b.date) - new Date(a.date)));
-  } catch (error) {
-    console.error("Gagal mengambil data:", error);
-  }
-};
-
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      console.log("FORM KIRIM:", form);
-      await ArticlePageAPI.createArticlePage(form);
-      console.log("SELESAI KIRIM");
+      setLoading(true);
+      setError("");
+      setSuccess("");
+
+      if (isEditing && editingId) {
+        await ArticleAPI.updateArticle(editingId, form);
+        setSuccess("Artikel berhasil diperbarui");
+      } else {
+        await ArticleAPI.addArticle(form);
+        setSuccess("Artikel berhasil ditambahkan");
+      }
+
+      // Reset form dan status
       setForm({ title: "", img: "", date: "", summary: "" });
-      fetchProducts();
-    } catch (error) {
-      console.error("Gagal menambahkan produk:", error);
+      setIsEditing(false);
+      setEditingId(null);
+
+      setTimeout(() => setSuccess(""), 3000);
+
+      fetchArticle();
+    } catch (err) {
+      setError(`Terjadi kesalahan: ${err.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,17 +79,23 @@ export default function ArticlePage() {
         Produk Fashion Terbaru
       </h1>
 
-      {/* Form Tambah Produk */}
+      {/* Alert */}
+      {error && <AlertBox message={error} type="error" />}
+      {success && <AlertBox message={success} type="success" />}
+
+      {/* Form Tambah / Edit Artikel */}
       <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-xl shadow-md space-y-4 max-w-2xl mx-auto"
       >
-        <h2 className="text-xl font-semibold">Tambah Produk Baru</h2>
+        <h2 className="text-xl font-semibold">
+          {isEditing ? "Edit Artikel" : "Tambah Artikel Baru"}
+        </h2>
         <input
           name="title"
           value={form.title}
           onChange={handleChange}
-          placeholder="Judul Produk"
+          placeholder="Judul Artikel"
           className="w-full border rounded p-2"
           required
         />
@@ -91,24 +127,38 @@ export default function ArticlePage() {
           type="submit"
           className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition"
         >
-          Tambah Produk
+          {isEditing ? "Update Artikel" : "Tambah Artikel"}
         </button>
       </form>
 
-      {/* Daftar Produk */}
-      <ArticleList
-        products={products}
-        onEdit={(product) => setForm(product)}
-        onDelete={async (id) => {
-          try {
-            await ArticlePageAPI.deleteArticlePage(id);
-            fetchProducts();
-          } catch (error) {
-            console.error("Gagal menghapus produk:", error);
-          }
-        }}
-        loading={false}
-      />
+      {/* Loading */}
+      {loading && <Loading />}
+
+      {/* Error */}
+      {!loading && error && <Error message={error} />}
+
+      {/* Daftar Artikel */}
+      {!loading && article.length === 0 && <EmptyState message="Belum ada artikel." />}
+
+      {!loading && article.length > 0 && (
+        <ArticleList
+          products={article}
+          onEdit={(product) => {
+            setIsEditing(true);
+            setEditingId(product.id);
+            setForm(product);
+          }}
+          onDelete={async (id) => {
+            try {
+              await ArticleAPI.deleteArticle(id);
+              fetchArticle();
+            } catch (error) {
+              console.error("Gagal menghapus artikel:", error);
+            }
+          }}
+          loading={loading}
+        />
+      )}
     </div>
   );
 }

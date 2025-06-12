@@ -1,37 +1,62 @@
-import React from 'react';
-
-const photos = [
-  {
-    id: 1,
-    title: "Lookbook Summer 2025",
-    url: "https://source.unsplash.com/600x400/?fashion,model",
-  },
-  {
-    id: 2,
-    title: "Studio Shoot Collection",
-    url: "https://source.unsplash.com/600x400/?fashion,photoshoot",
-  },
-  {
-    id: 3,
-    title: "Outdoor Street Style",
-    url: "https://source.unsplash.com/600x400/?street,fashion",
-  },
-];
-
-const videos = [
-  {
-    id: 1,
-    title: "Behind The Scenes - Summer Collection",
-    url: "https://www.youtube.com/embed/ysz5S6PUM-U",
-  },
-  {
-    id: 2,
-    title: "Fashion Campaign 2025",
-    url: "https://www.youtube.com/embed/oUFJJNQGwhk",
-  },
-];
+import { useEffect, useState } from "react";
+import { MediaAPI } from "../services/MediaAPI";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
+import AlertBox from "../components/AlertBox";
 
 export default function MediaPage() {
+  const [photos, setPhotos] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [form, setForm] = useState({
+    title: "",
+    url: "",
+    type: "photo",
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const fetchMedia = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const data = await MediaAPI.fetchMedia();
+      setPhotos(data.filter((item) => item.type === "photo"));
+      setVideos(data.filter((item) => item.type === "video"));
+    } catch (err) {
+      setError("Gagal mengambil data media");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchMedia();
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      await MediaAPI.addMedia(form);
+      setSuccess("Media berhasil ditambahkan!");
+      setForm({ title: "", url: "", type: "photo" });
+      fetchMedia();
+    } catch (err) {
+      setError("Gagal menambahkan media.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="w-full px-6 py-12 bg-white min-h-screen">
       <div className="max-w-6xl mx-auto text-center mb-12">
@@ -39,7 +64,49 @@ export default function MediaPage() {
         <p className="text-gray-600">Jelajahi galeri video & foto dari koleksi dan aktivitas kami.</p>
       </div>
 
-      {/* Foto Galeri */}
+      {/* FORM TAMBAH MEDIA */}
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-xl shadow-md space-y-4 max-w-2xl mx-auto mb-12"
+      >
+        <h2 className="text-xl font-semibold">Tambah Media Baru</h2>
+        <input
+          name="title"
+          value={form.title}
+          onChange={handleChange}
+          placeholder="Judul Media"
+          className="w-full border rounded p-2"
+          required
+        />
+        <input
+          name="url"
+          value={form.url}
+          onChange={handleChange}
+          placeholder="URL Media (Gambar atau Video YouTube)"
+          className="w-full border rounded p-2"
+          required
+        />
+        <select
+          name="type"
+          value={form.type}
+          onChange={handleChange}
+          className="w-full border rounded p-2"
+        >
+          <option value="photo">Foto</option>
+          <option value="video">Video</option>
+        </select>
+        <button
+          type="submit"
+          className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition"
+        >
+          Tambah Media
+        </button>
+        {loading && <Loading />}
+        {error && <Error message={error} />}
+        {success && <AlertBox message={success} />}
+      </form>
+
+      {/* FOTO GALERI */}
       <div className="mb-16">
         <h2 className="text-2xl font-semibold mb-6 text-left">Galeri Foto</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -54,7 +121,7 @@ export default function MediaPage() {
         </div>
       </div>
 
-      {/* Video Galeri */}
+      {/* VIDEO GALERI */}
       <div>
         <h2 className="text-2xl font-semibold mb-6 text-left">Galeri Video</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
