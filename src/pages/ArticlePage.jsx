@@ -74,7 +74,7 @@ export default function ArticlePage() {
   };
 
   return (
-    <div className="w-full px-4 py-10 space-y-10 bg-gray-100 min-h-screen">
+    <div className="w-full px-4  space-y-10 bg-gray-100 min-h-screen py-20">
       <h1 className="text-4xl font-bold text-center mb-6">
         Produk Fashion Terbaru
       </h1>

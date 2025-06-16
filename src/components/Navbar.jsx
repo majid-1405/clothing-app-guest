@@ -1,4 +1,4 @@
-import { BsFillCartFill } from "react-icons/bs"; 
+import { BsFillCartFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { BiErrorCircle } from "react-icons/bi";
@@ -46,7 +46,7 @@ export default function Navbar() {
         <ul
           className={`${
             menuOpen ? "flex" : "hidden"
-          } flex-col lg:flex lg:flex-row lg:items-center gap-4 lg:gap-6 mt-4 lg:mt-0  font-gothic`}
+          } flex-col lg:flex lg:flex-row lg:items-center gap-4 lg:gap-4 mt-4 lg:mt-0 font-gothic`}
         >
           <li>
             <NavLink to="/" className={menuClass}>
@@ -56,31 +56,6 @@ export default function Navbar() {
           <li>
             <NavLink to="/ProductList" className={menuClass}>
               Product
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/FAQ" className={menuClass}>
-              Faqs
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Aboutus" className={menuClass}>
-              About Us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Contactus" className={menuClass}>
-              Contact Us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/OurTeam" className={menuClass}>
-              OurTeam
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Reviewpage" className={menuClass}>
-              Reviews
             </NavLink>
           </li>
           <li>
@@ -94,15 +69,80 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/Mediapage" className={menuClass}>
-              Media
+            <NavLink to="/Reviewpage" className={menuClass}>
+              Reviews
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/PreOrderpage" className={menuClass}>
-              Pre Order
-            </NavLink>
+          
+          <li className="dropdown dropdown-hover">
+            <div
+              tabIndex={0}
+              role="button"
+              className="text-sm font-gothic text-slate-600 py-1 px-2 rounded hover:bg-gray-100"
+            >
+              About
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-44"
+            >
+              <li>
+                <NavLink to="/Aboutus" className={menuClass}>
+                  About Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/Contactus" className={menuClass}>
+                  Contact Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/Mediapage" className={menuClass}>
+                  Media Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/OurTeam" className={menuClass}>
+                  OurTeam
+                </NavLink>
+              </li>
+            </ul>
           </li>
+          <li className="dropdown dropdown-hover">
+            <div
+              tabIndex={1}
+              role="button"
+              className="text-sm font-gothic text-slate-600 py-1 px-2 rounded hover:bg-gray-100"
+            >
+              Service
+            </div>
+            <ul
+              tabIndex={1}
+              className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-44"
+            >
+              <li>
+                <NavLink to="/FAQ" className={menuClass}>
+                  Faqs
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/PreOrderpage" className={menuClass}>
+                  Pre Order
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/Mediapage" className={menuClass}>
+                  Media Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/Careerpage" className={menuClass}>
+                  Career
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <NavLink id="menu-5" to="/400" className={menuClass}>
               {/* <BiErrorCircle className="mr-4 text-xl" />    */}

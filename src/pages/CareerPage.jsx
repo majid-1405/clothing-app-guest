@@ -99,7 +99,7 @@ export default function CareerPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <div className="max-w-4xl mx-auto px-4 py-20">
       <h1 className="text-3xl font-bold mb-6 text-center">Career Opportunities</h1>
 
       {error && <Error message={error} />}
