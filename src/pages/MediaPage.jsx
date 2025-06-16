@@ -58,7 +58,7 @@ export default function MediaPage() {
   };
 
   return (
-    <div className="w-full px-6 py-12 bg-white min-h-screen py-20">
+    <div className="w-full px-6 bg-white min-h-screen py-20">
       <div className="max-w-6xl mx-auto text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Katalog Media</h1>
         <p className="text-gray-600">Jelajahi galeri video & foto dari koleksi dan aktivitas kami.</p>
