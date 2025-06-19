@@ -1,10 +1,12 @@
+import { BiUserCircle } from "react-icons/bi";
 import { BsFillCartFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { BiErrorCircle } from "react-icons/bi";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulasi login
+  const navigate = useNavigate();
 
   const menuClass = ({ isActive }) =>
     `text-sm font-gothic ${
@@ -13,15 +15,18 @@ export default function Navbar() {
         : "text-slate-600 hover:underline underline-offset-[4px]"
     }`;
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
+
   return (
-    <nav className="flex bg-white py-4 fixed top-0 left-0 right-0 z-50 ">
+    <nav className="flex bg-white py-4 fixed top-0 left-0 right-0 z-50">
       <div className="flex items-center justify-between w-full px-4 lg:px-8 py-3">
-        {/* Logo */}
         <NavLink to="/" className="text-lg font-gothic text-slate-800">
           Clothing Store
         </NavLink>
 
-        {/* Toggle Button for Mobile */}
         <button
           className="lg:hidden text-slate-700"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -42,12 +47,12 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Menu Items */}
         <ul
           className={`${
             menuOpen ? "flex" : "hidden"
           } flex-col lg:flex lg:flex-row lg:items-center gap-4 lg:gap-4 mt-4 lg:mt-0 font-gothic`}
         >
+          {/* --- Pages --- */}
           <li>
             <NavLink to="/" className={menuClass}>
               Home
@@ -73,7 +78,8 @@ export default function Navbar() {
               Reviews
             </NavLink>
           </li>
-          
+
+          {/* --- About Dropdown --- */}
           <li className="dropdown dropdown-hover">
             <div
               tabIndex={0}
@@ -103,11 +109,13 @@ export default function Navbar() {
               </li>
               <li>
                 <NavLink to="/OurTeam" className={menuClass}>
-                  OurTeam
+                  Our Team
                 </NavLink>
               </li>
             </ul>
           </li>
+
+          {/* --- Service Dropdown --- */}
           <li className="dropdown dropdown-hover">
             <div
               tabIndex={1}
@@ -143,53 +151,74 @@ export default function Navbar() {
             </ul>
           </li>
 
+          {/* --- Error Routes --- */}
           <li>
-            <NavLink id="menu-5" to="/400" className={menuClass}>
-              {/* <BiErrorCircle className="mr-4 text-xl" />    */}
+            <NavLink to="/400" className={menuClass}>
               400
             </NavLink>
           </li>
           <li>
-            <NavLink id="menu-6" to="/401" className={menuClass}>
-              {/* <BiErrorCircle className="mr-4 text-xl" />      */}
+            <NavLink to="/401" className={menuClass}>
               401
             </NavLink>
           </li>
           <li>
-            <NavLink id="menu-7" to="/403" className={menuClass}>
-              {/* <BiErrorCircle className="mr-4 text-xl" />     */}
+            <NavLink to="/403" className={menuClass}>
               403
             </NavLink>
           </li>
           <li>
-            <NavLink id="menu-8" to="/ErrorPage" className={menuClass}>
-              {/* <BiErrorCircle className="mr-4 text-xl" /> */}
+            <NavLink to="/ErrorPage" className={menuClass}>
               404
             </NavLink>
           </li>
+
+          {/* --- Cart Icon --- */}
           <li>
-            <NavLink id="menu-8" to="/KeranjangPage" className={menuClass}>
-              <BsFillCartFill />
+            <NavLink to="/KeranjangPage" className={menuClass}>
+              <BsFillCartFill className="size-5" />
             </NavLink>
           </li>
-          <li className="flex items-center gap-2 text-slate-600">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-              />
-            </svg>
-            <NavLink to="/profile" className="text-sm font-gothic">
-              Profile
-            </NavLink>
+
+          {/* --- User Dropdown --- */}
+          <li className="relative">
+            {isLoggedIn ? (
+              <div className="dropdown dropdown-hover">
+                <div
+                  tabIndex={2}
+                  role="button"
+                  className="text-sm font-gothic text-slate-600 py-1 px-2 rounded hover:bg-gray-100 flex items-center gap-1"
+                >
+                  <BiUserCircle className="size-6" />
+                </div>
+                <ul
+                  tabIndex={2}
+                  className="dropdown-content z-[1] right-0 menu p-2 shadow bg-white rounded-box w-44"
+                >
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="text-left text-sm font-gothic text-red-500 hover:underline px-2 py-1"
+                    >
+                      Logout
+                    </button>
+                    <button
+                      onClick={() => {
+                        window.location.href =
+                          "https://project-app-likq.vercel.app/"; // ganti dengan URL admin kamu
+                      }}
+                      className="text-left text-sm font-gothic text-red-500 hover:underline px-2 py-1"
+                    >
+                      Admin
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <NavLink to="/login" className={menuClass}>
+                <BiUserCircle className="size-6" />
+              </NavLink>
+            )}
           </li>
         </ul>
       </div>

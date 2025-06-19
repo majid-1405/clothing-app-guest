@@ -1,5 +1,9 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui"{
+    hemes: light --default, dark --prefersdark;
+}
+
+
 
 @font-face {
     font-family: 'Gothic';

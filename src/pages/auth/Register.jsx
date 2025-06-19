@@ -19,7 +19,7 @@ export default function Register() {
                     <input
                         type="email"
                         id="email"
-                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
+                        className="w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
                             placeholder-gray-400"
                         placeholder="you@example.com"
                     />
@@ -35,7 +35,7 @@ export default function Register() {
                     <input
                         type="password"
                         id="password"
-                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
+                        className="w-full px-4 py-2 bg-gray-50 border text-gray-700 border-gray-300 rounded-lg shadow-sm
                             placeholder-gray-400  "
                         placeholder="********"
                     />
