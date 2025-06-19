@@ -4,7 +4,7 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 import EmptyState from "../components/EmptyState";
 import AlertBox from "../components/AlertBox";
-import ArticleList from "../components/ArticleList"; // Pastikan komponen ini ada
+import ArticleList from "../components/Articlelist"; // Pastikan komponen ini ada
 
 export default function ArticlePage() {
   const [article, setArticle] = useState([]);
