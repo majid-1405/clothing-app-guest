@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ArticleAPI } from "../services/ArticleAPI";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import ArticleList from "../components/ArticleList"; // Komponen untuk menampilkan list
+import ArticleList from "../components/Articlelist"; // Komponen untuk menampilkan list
 
 export default function ArticlePage() {
   const [article, setArticle] = useState([]);
