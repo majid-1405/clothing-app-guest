@@ -3,7 +3,7 @@ export default function ContactPage() {
     <section className="bg-white border border-gray-100 rounded-xl mt-30 mb-20 mx-6">
       <div className="container px-6 py-6 mx-auto">
         <div>
-          <p className=" text-gray-900 font-gothic text-3xl">Contact us</p>
+          <p className=" text-gray-900 font-integral text-3xl">Contact us</p>
           <h1 className="mt-2 font-semibold text-gray-800 md:text-xl">
             Chat to our team
           </h1>

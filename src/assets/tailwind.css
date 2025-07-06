@@ -10,6 +10,12 @@
     src: url('/fonts/SpecialGothicExpandedOne-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Integral';
+    src: url('/fonts/Fontspring-DEMO-integralcf-extrabold.otf');
+}
+
 @theme {
     --font-gothic: "Gothic", sans-serif;
+    --font-integral: "Integral", sans-serif;
 }

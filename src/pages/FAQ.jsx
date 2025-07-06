@@ -68,7 +68,7 @@ export default function FAQ() {
           <div className="md:col-span-2">
             <div className="max-w-xs">
               <br />
-              <h2 className="text-2xl font-bold md:text-4xl md:leading-tighttext-black font-gothic">
+              <h2 className="text-2xl font-bold md:text-4xl md:leading-tighttext-black font-integral">
                 FAQs
               </h2>
               <p className="mt-1 hidden md:block text-black font-gothic">

@@ -9,10 +9,10 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const menuClass = ({ isActive }) =>
-    `text-sm font-gothic ${
+    `text-sm font-integral py-1 px-2 rounded ${
       isActive
-        ? "text-slate-800 font-semibold"
-        : "text-slate-600 hover:underline underline-offset-[4px]"
+        ? "text-slate-800 font-semibold bg-gray-100"
+        : "text-slate-600 hover:bg-gray-100 "
     }`;
 
   const handleLogout = () => {
@@ -21,10 +21,17 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex bg-white py-4 fixed top-0 left-0 right-0 z-50">
-      <div className="flex items-center justify-between w-full px-4 lg:px-8 py-3">
-        <NavLink to="/" className="text-lg font-gothic text-slate-800">
-          Clothing Store
+    <nav className="flex bg-white py-0.5 fixed top-0 left-0 right-0 z-50">
+      <div className="flex items-center justify-between w-full px-4 lg:px-8 py-3 font-integral">
+        <NavLink to="/" className="flex items-center gap-2">
+          <img
+            src="/img/Logo.png"
+            alt="Logo"
+            className="h-10 w-auto object-contain"
+          />
+          <span className="text-xl font-bold text-slate-800 tracking-wide">
+            CLOTHIFY
+          </span>
         </NavLink>
 
         <button
@@ -50,32 +57,32 @@ export default function Navbar() {
         <ul
           className={`${
             menuOpen ? "flex" : "hidden"
-          } flex-col lg:flex lg:flex-row lg:items-center gap-4 lg:gap-4 mt-4 lg:mt-0 font-gothic`}
+          } flex-col lg:flex lg:flex-row lg:items-center gap-4 lg:gap-4 mt-4 lg:mt-0 font-integral`}
         >
           {/* --- Pages --- */}
           <li>
             <NavLink to="/" className={menuClass}>
-              Home
+              HOME
             </NavLink>
           </li>
           <li>
             <NavLink to="/ProductList" className={menuClass}>
-              Product
+              PRODUCT
             </NavLink>
           </li>
           <li>
             <NavLink to="/Articlepage" className={menuClass}>
-              Article
+              ARTICLE
             </NavLink>
           </li>
           <li>
             <NavLink to="/Careerpage" className={menuClass}>
-              Career
+              CAREER
             </NavLink>
           </li>
           <li>
             <NavLink to="/Reviewpage" className={menuClass}>
-              Reviews
+              REVIEWS
             </NavLink>
           </li>
 
@@ -84,13 +91,13 @@ export default function Navbar() {
             <div
               tabIndex={0}
               role="button"
-              className="text-sm font-gothic text-slate-600 py-1 px-2 rounded hover:bg-gray-100"
+              className="text-sm  text-slate-600 py-1 px-2 rounded hover:bg-gray-100 font-integral"
             >
               About
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-44"
+              className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-44 font-integral"
             >
               <li>
                 <NavLink to="/Aboutus" className={menuClass}>
@@ -120,7 +127,7 @@ export default function Navbar() {
             <div
               tabIndex={1}
               role="button"
-              className="text-sm font-gothic text-slate-600 py-1 px-2 rounded hover:bg-gray-100"
+              className="text-sm text-slate-600 py-1 px-2 rounded hover:bg-gray-100 font-integral"
             >
               Service
             </div>
@@ -151,7 +158,7 @@ export default function Navbar() {
             </ul>
           </li>
 
-          {/* --- Error Routes --- */}
+          {/* --- Error Routes ---
           <li>
             <NavLink to="/400" className={menuClass}>
               400
@@ -171,7 +178,7 @@ export default function Navbar() {
             <NavLink to="/ErrorPage" className={menuClass}>
               404
             </NavLink>
-          </li>
+          </li> */}
 
           {/* --- Cart Icon --- */}
           <li>

@@ -51,9 +51,9 @@ export default function PreOrderPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black relative">
+    <div className="min-h-screen bg-white text-black relative py-25">
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-100 via-white to-gray-100 border-b-2 border-black py-16">
+      <div className="bg-gradient-to-r from-gray-100 via-white to-gray-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">
             Pre Order Collection

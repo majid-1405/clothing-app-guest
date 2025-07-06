@@ -4,7 +4,7 @@ export default function HeroSection() {
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="flex flex-col justify-center items-center sm:max-w-lg">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl  font-gothic">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl  font-integral">
               Dari Kasual hingga Formal
             </h1>
             <p className="mt-4 text-xl text-gray-500  font-gothic">

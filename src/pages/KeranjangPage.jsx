@@ -314,7 +314,7 @@ export default function KeranjangPage() {
                   ) : (
                     <>
                       <Check className="w-4 h-4 inline mr-2" />
-                      Kirim Pesanan
+                      Check Out
                     </>
                   )}
                 </button>

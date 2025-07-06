@@ -28,8 +28,8 @@ export default function ArticlePage() {
   }, []);
 
   return (
-    <div className="w-full px-4 bg-gray-100 min-h-screen py-20">
-      <h1 className="text-4xl font-bold text-center mb-10">
+    <div className="w-full px-4 bg-gray-100 min-h-screen py-30">
+      <h1 className="text-4xl font-bold text-center mb-10 font-integral">
         Daftar Artikel
       </h1>
 
