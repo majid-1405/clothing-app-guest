@@ -15,20 +15,7 @@ export default function ArticleList({ products = [], onEdit, onDelete, loading }
             <h2 className="text-2xl font-semibold text-black">{product.title}</h2>
             <p className="mt-2 text-gray-700">{product.summary}</p>
 
-            <div className="mt-4 flex gap-3 justify-center md:justify-start">
-              <button
-                onClick={() => onEdit(product)}
-                className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => onDelete(product.id)}
-                className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition"
-              >
-                Hapus
-              </button>
-            </div>
+           
           </div>
 
           <div className="flex-1 max-w-md p-4">

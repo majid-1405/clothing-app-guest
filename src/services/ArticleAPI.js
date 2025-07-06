@@ -19,16 +19,7 @@ export const ArticleAPI = {
   addArticle: async (article) => {
     const response = await axios.post(API_URL, article, { headers });
     return response.data[0];
-  },
+  }
 
-  deleteArticle: async (id) => {
-    await axios.delete(`${API_URL}?id=eq.${id}`, { headers });
-  },
-
-  updateArticle: async (id, updatedArticle) => {
-    const response = await axios.patch(`${API_URL}?id=eq.${id}`, updatedArticle, {
-      headers,
-    });
-    return response.data[0];
-  },
+ 
 };
