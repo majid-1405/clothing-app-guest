@@ -117,7 +117,7 @@ export default function OurTeamPage() {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-black transition-colors duration-300">
                     {member.name}
                   </h3>
-                  <p className="text-lg font-semibold text-gray-700 uppercase tracking-wide text-sm mb-2">
+                  <p className="font-semibold text-gray-700 uppercase tracking-wide text-sm mb-2">
                     {member.role}
                   </p>
                   <div className="inline-block bg-gray-100 px-3 py-1 rounded-full text-xs font-medium text-gray-600 border border-gray-200">
